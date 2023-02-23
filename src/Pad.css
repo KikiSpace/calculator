@@ -1,0 +1,48 @@
+.pad {
+  border-color: black;
+  color: aliceblue;
+
+  box-sizing: content-box;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding-top: 28px;
+}
+
+.pad:active {
+  background-color: gainsboro;
+}
+
+.pad-darker-grey {
+  background-color: #5e5c5c;
+  height: 3rem;
+  width: 4rem;
+}
+
+.pad-yellow {
+  background-color: #ffc300;
+  height: 3rem;
+  width: 4rem;
+}
+
+.pad-lighter-grey {
+  background-color: #949292;
+  height: 3rem;
+  width: 4rem;
+}
+
+.pad-wider-grey {
+  height: 3rem;
+  width: 8rem;
+  background-color: #949292;
+}
+
+.left {
+  border-radius: 0 0 0 0.3cm;
+}
+
+.right {
+  border-radius: 0 0 0.3cm 0;
+}
+.text {
+}

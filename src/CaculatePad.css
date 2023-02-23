@@ -1,0 +1,4 @@
+.mainpad {
+  display: flex;
+  flex-wrap: wrap;
+}
