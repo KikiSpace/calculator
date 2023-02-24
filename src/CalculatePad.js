@@ -2,7 +2,7 @@ import { useState } from "react";
 import useSound from "use-sound";
 import stopAlert from "./shared/stop.mp3";
 import clickSound from "./shared/click.mp3";
-import "./CaculatePad.css";
+import "./CalculatePad.css";
 import Pad from "./Pad";
 const TYPE = {
   DARKER: "darker-grey",
@@ -13,12 +13,11 @@ const TYPE = {
   RIGHT: "yellow right",
 };
 
-const CaculatePad = (props) => {
+const CalculatePad = (props) => {
   const [prevNum, setPrevNum] = useState("0");
   const [curNum, setCurNum] = useState("0");
   const [operater, setOperater] = useState("+");
   const [display, setDisplay] = useState(0);
-
   const [playAlert] = useSound(stopAlert, { volume: 0.25 });
   const [playClick] = useSound(clickSound, { volume: 0.25 });
 
@@ -74,6 +73,10 @@ const CaculatePad = (props) => {
   };
 
   const DotOperation = () => {
+    if (String(display).includes(".")) {
+      playAlert();
+      return;
+    }
     let newNumber = curNum + ".";
     props.numberDisplayHandler(newNumber);
     setDisplay(newNumber);
@@ -144,4 +147,4 @@ const CaculatePad = (props) => {
   );
 };
 
-export default CaculatePad;
+export default CalculatePad;

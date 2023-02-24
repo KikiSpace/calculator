@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import CaculatePad from "./CaculatePad";
+import CalculatePad from "./CalculatePad";
 
 function App() {
   const [number, setNumber] = useState(0);
@@ -9,13 +9,17 @@ function App() {
     setNumber(number);
   };
 
+  const displayNumber = (number) => {
+    return String(number).slice(0, 8);
+  };
+
   return (
     <div className="App">
       <div className="padcanvas">
         <div className="inputpad">
-          <h className="display">{number}</h>
+          <h className="display">{displayNumber(number)}</h>
         </div>
-        <CaculatePad numberDisplayHandler={numberDisplayHandler} />
+        <CalculatePad numberDisplayHandler={numberDisplayHandler} />
       </div>
     </div>
   );
