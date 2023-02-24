@@ -30,10 +30,10 @@ no
 
 N/A
 
-#### Tech stack
+### Tech stack
 
 - React
 
-#### UI
+### UI
 
 ![UI](./src/shared/UI.png)
