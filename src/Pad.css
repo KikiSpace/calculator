@@ -7,10 +7,15 @@
   display: flex;
   justify-content: center;
   padding-top: 28px;
+  box-shadow: 0 0 10px gray;
 }
 
 .pad:active {
   background-color: gainsboro;
+}
+
+.pad:focus {
+  background-color: rgb(147, 145, 145);
 }
 
 .pad-darker-grey {
