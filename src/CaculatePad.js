@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useSound from "use-sound";
 import stopAlert from "./shared/stop.mp3";
+import clickSound from "./shared/click.mp3";
 import "./CaculatePad.css";
 import Pad from "./Pad";
 const TYPE = {
@@ -18,9 +19,14 @@ const CaculatePad = (props) => {
   const [operater, setOperater] = useState("+");
   const [display, setDisplay] = useState(0);
 
-  const [playAlert] = useSound(stopAlert);
+  const [playAlert] = useSound(stopAlert, { volume: 0.25 });
+  const [playClick] = useSound(clickSound, { volume: 0.25 });
 
   const numberHandler = (num) => {
+    if (curNum.length === 8) {
+      playAlert();
+      return;
+    }
     let newNumber = curNum + num;
     const newDisplay = Number(newNumber);
     if (Number.isNaN(newDisplay)) {
@@ -31,6 +37,7 @@ const CaculatePad = (props) => {
     props.numberDisplayHandler(newDisplay);
     setDisplay(newNumber);
     setCurNum(String(newDisplay));
+    playClick();
   };
 
   const operatorHandler = (operater) => {
@@ -45,6 +52,7 @@ const CaculatePad = (props) => {
     setPrevNum(String(res));
     setCurNum(0);
     setOperater("+");
+    playClick();
   };
 
   const clearup = () => {
@@ -62,6 +70,7 @@ const CaculatePad = (props) => {
     setCurNum(String(newNumber));
     setPrevNum("0");
     setOperater("+");
+    playClick();
   };
 
   const DotOperation = () => {
@@ -69,6 +78,7 @@ const CaculatePad = (props) => {
     props.numberDisplayHandler(newNumber);
     setDisplay(newNumber);
     setCurNum(String(newNumber));
+    playClick();
   };
 
   return (
