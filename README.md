@@ -36,6 +36,4 @@ N/A
 
 #### UI
 
-- Login
-  ![UI](./src/shared/UI.png)
-- TaskList
+![UI](./src/shared/UI.png)
