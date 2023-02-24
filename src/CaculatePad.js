@@ -1,4 +1,6 @@
 import { useState } from "react";
+import useSound from "use-sound";
+import stopAlert from "./shared/stop.mp3";
 import "./CaculatePad.css";
 import Pad from "./Pad";
 const TYPE = {
@@ -16,9 +18,16 @@ const CaculatePad = (props) => {
   const [operater, setOperater] = useState("+");
   const [display, setDisplay] = useState(0);
 
+  const [playAlert] = useSound(stopAlert);
+
   const numberHandler = (num) => {
     let newNumber = curNum + num;
     const newDisplay = Number(newNumber);
+    if (Number.isNaN(newDisplay)) {
+      clearup();
+      playAlert();
+      return;
+    }
     props.numberDisplayHandler(newDisplay);
     setDisplay(newNumber);
     setCurNum(String(newDisplay));
@@ -53,6 +62,13 @@ const CaculatePad = (props) => {
     setCurNum(String(newNumber));
     setPrevNum("0");
     setOperater("+");
+  };
+
+  const DotOperation = () => {
+    let newNumber = curNum + ".";
+    props.numberDisplayHandler(newNumber);
+    setDisplay(newNumber);
+    setCurNum(String(newNumber));
   };
 
   return (
@@ -108,7 +124,7 @@ const CaculatePad = (props) => {
       <Pad classes={TYPE.LEFT} onClick={() => numberHandler(0)}>
         0
       </Pad>
-      <Pad classes={TYPE.LIGHTER} onClick={() => numberHandler(".")}>
+      <Pad classes={TYPE.LIGHTER} onClick={() => DotOperation()}>
         .
       </Pad>
       <Pad classes={TYPE.RIGHT} onClick={() => evaluate("=")}>

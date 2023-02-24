@@ -18,7 +18,6 @@
   flex-direction: column;
   border-radius: 0.3cm 0.3cm 0 0;
   box-shadow: 0 0 10px gray;
-  box-sizing: 10px;
 }
 
 .display {
